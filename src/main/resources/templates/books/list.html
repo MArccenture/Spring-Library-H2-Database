@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Framework Moo</title>
+</head>
+<body>
+<h1>Book List</h1>
+<!--private @Id @GeneratedValue Long bookId;-->
+<!--private String bookTitle;-->
+<!--private String bookAuthor;-->
+<!--private int publicationYear;-->
+<!--private double price;-->
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Author</th>
+    <th>Publisher</th>
+  </tr>
+  <tr th:each="book : ${books}">
+    <form action="/addToBasket" method="post">
+    <td > <input   name="bookId"     th:value="${book.bookId}" readonly value="${book.bookId}"></td>
+      <td > <input name="bookTitle"  th:value="${book.bookTitle}" readonly value="${book.bookTitle}"></td>
+      <td > <input name="author"     th:value="${book.bookAuthor}" readonly></td>
+      <td > <input name="publisher"  th:value="${book.publisher.name}" readonly></td>
+      <td > <input name="quantity"   th:value="${book.quantity}" readonly></td>
+      <td > <input name="price"      th:value="${book.price}" readonly></td>
+<!--    <td th:text="${book.bookTitle}" th:value="${book.bookTitle}">Titles</td>-->
+<!--    <td th:text="${book.bookAuthor}" th:value="${book.bookAuthor}">Authors</td>-->
+<!--    <td th:text="${book.publisher.name}" th:value="${book.publisher.name}">Wrox</td>-->
+<!--    <td> <input name="bookTitle" th:value="${book.bookTitle}"/><br>-->
+<!--       <input name="author" th:value="${book.bookAuthor}"/><br>-->
+    <td>  <button > Add to basket</button></td>
+    </form>
+  </tr>
+</table>
+</body>
+</html>

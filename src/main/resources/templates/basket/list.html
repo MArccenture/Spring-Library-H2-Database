@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Spring Framework Moo</title>
+</head>
+<body>
+<h1>This is your current Basket:</h1>
+<!--private @Id @GeneratedValue Long basketId;-->
+<!--private String bookTitle;-->
+<!--private String author;-->
+<!--private String publisher;-->
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Book Title</th>
+        <th>Author</th>
+        <th>Publisher</th>
+        <th>Quantity</th>
+        <th>Price</th>
+    </tr>
+    <tr th:each="basketItem : ${basket}">
+        <form th:action="@{/basket/delete/{basketId}(basketId=${basketItem.basketId})}" method="delete">
+        <td> <input name="basketId"  th:value="${basketItem.basketId}"  readonly> </td>
+        <td> <input name="bookTitle" th:value="${basketItem.bookTitle}"  readonly> </td>
+        <td> <input name="author"    th:value="${basketItem.author}"   readonly> </td>
+        <td> <input name="publisher" th:value="${basketItem.publisher}"readonly> </td>
+        <td> <input name="quantity"  th:value="${basketItem.quantity}"   readonly> </td>
+        <td> <input name="price"     th:value="${basketItem.price}"     readonly> </td>
+            <td>  <button > Delete from basket</button></td>
+        </form>
+        
+    </tr>
+</table>
+<!--<p>Basket Total: </p>-->
+<a href="/">Back to home</a>
+</body>
+</html>
